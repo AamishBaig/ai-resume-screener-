@@ -1,0 +1,212 @@
+# AI Resume Screener Configuration
+
+# Embedding model configuration
+embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+embedding_batch_size: 16
+
+# File upload limits
+max_files: 50
+max_file_size_mb: 10
+
+# Keyword matching configuration
+# Multi-industry keywords for broader applicability
+must_have_keywords:
+  # SOFTWARE DEVELOPMENT & IT
+  - "python"
+  - "javascript"
+  - "typescript"
+  - "java"
+  - "c#|c sharp"
+  - "react"
+  - "angular"
+  - "vue"
+  - "node.js"
+  - "sql"
+  - "mongodb"
+  - "postgresql"
+  - "machine learning"
+  - "data science"
+  - "aws"
+  - "azure"
+  - "gcp|google cloud"
+  - "docker"
+  - "kubernetes"
+  - "git"
+  - "devops"
+  - "ci/cd"
+  - "agile"
+  - "scrum"
+  - "rest api"
+  - "microservices"
+  
+  # HEALTHCARE & MEDICAL
+  - "registered nurse|rn"
+  - "licensed practical nurse|lpn"
+  - "medical doctor|md"
+  - "physician"
+  - "pharmacist"
+  - "healthcare"
+  - "patient care"
+  - "medical records"
+  - "hipaa"
+  - "clinical"
+  - "surgery"
+  - "diagnosis"
+  - "emr|ehr"
+  - "cpr certified"
+  - "bls|acls"
+  
+  # FINANCE & ACCOUNTING
+  - "cpa|certified public accountant"
+  - "financial analysis"
+  - "accounting"
+  - "bookkeeping"
+  - "quickbooks"
+  - "gaap"
+  - "tax preparation"
+  - "financial reporting"
+  - "budget management"
+  - "accounts payable"
+  - "accounts receivable"
+  - "financial modeling"
+  - "investment"
+  - "portfolio management"
+  - "bloomberg"
+  - "excel|advanced excel"
+  
+  # MARKETING & SALES
+  - "digital marketing"
+  - "seo|search engine optimization"
+  - "sem|ppc"
+  - "google analytics"
+  - "social media marketing"
+  - "content marketing"
+  - "email marketing"
+  - "salesforce"
+  - "crm"
+  - "lead generation"
+  - "b2b sales"
+  - "b2c sales"
+  - "market research"
+  - "brand management"
+  - "copywriting"
+  
+  # HUMAN RESOURCES
+  - "talent acquisition"
+  - "recruitment"
+  - "onboarding"
+  - "employee relations"
+  - "performance management"
+  - "compensation"
+  - "benefits administration"
+  - "hris"
+  - "workday"
+  - "adp"
+  - "labor law"
+  - "diversity and inclusion"
+  
+  # LEGAL
+  - "juris doctor|jd"
+  - "bar admission"
+  - "litigation"
+  - "contract law"
+  - "corporate law"
+  - "legal research"
+  - "compliance"
+  - "intellectual property"
+  - "regulatory"
+  
+  # EDUCATION
+  - "curriculum development"
+  - "lesson planning"
+  - "classroom management"
+  - "special education"
+  - "teaching certification"
+  - "educational technology"
+  - "student assessment"
+  - "instructional design"
+  
+  # ENGINEERING (NON-SOFTWARE)
+  - "mechanical engineering"
+  - "electrical engineering"
+  - "civil engineering"
+  - "autocad"
+  - "solidworks"
+  - "project management"
+  - "cad|computer-aided design"
+  - "quality assurance"
+  - "lean manufacturing"
+  - "six sigma"
+  
+  # CUSTOMER SERVICE & SUPPORT
+  - "customer service"
+  - "call center"
+  - "help desk"
+  - "technical support"
+  - "ticketing system"
+  - "zendesk"
+  - "customer satisfaction"
+  - "conflict resolution"
+  
+  # DESIGN & CREATIVE
+  - "graphic design"
+  - "ui/ux design"
+  - "adobe photoshop"
+  - "adobe illustrator"
+  - "figma"
+  - "sketch"
+  - "video editing"
+  - "adobe premiere"
+  - "after effects"
+  - "typography"
+  - "branding"
+  
+  # PROJECT MANAGEMENT
+  - "pmp|project management professional"
+  - "jira"
+  - "asana"
+  - "trello"
+  - "waterfall"
+  - "kanban"
+  - "risk management"
+  - "stakeholder management"
+  - "budget tracking"
+  
+  # DATA & ANALYTICS
+  - "data analysis"
+  - "power bi"
+  - "tableau"
+  - "business intelligence"
+  - "statistics"
+  - "r programming"
+  - "data visualization"
+  - "big data"
+  - "hadoop"
+  - "spark"
+  
+  # GENERAL QUALIFICATIONS (APPLIES TO ALL)
+  - "bachelor|bachelor's degree|bs|ba"
+  - "master|master's degree|ms|ma|mba"
+  - "phd|doctorate"
+  - "certified|certification"
+  - "5+ years|senior"
+  - "10+ years|expert"
+  - "entry level|junior"
+  - "mid-level|intermediate"
+  - "leadership"
+  - "team management"
+  - "communication skills"
+  - "problem solving"
+  - "analytical"
+  - "bilingual"
+  - "remote work"
+  - "hybrid"
+
+keyword_boost_value: 0.05  # Boost per matched keyword
+
+# Timeout configuration (seconds)
+per_file_timeout: 30
+overall_timeout: 300
+
+# Logging
+log_level: "INFO"
