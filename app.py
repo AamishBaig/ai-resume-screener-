@@ -23,10 +23,10 @@ logger = setup_logging()
 
 # Page configuration
 st.set_page_config(
-    page_title="AI Resume Screener - Enhanced",
-    page_icon="🎯",
+    page_title="AI Resume Screener",
+    page_icon="📄",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 # Custom CSS
@@ -611,42 +611,48 @@ Certifications: Six Sigma preferred""",
         self.render_header()
         
         with st.sidebar:
-            st.header("ℹ️ About Enhanced Scoring")
+            st.header("About")
             st.markdown("""
-            **Why this is better than simple text matching:**
+            **AI Resume Screener** uses semantic similarity 
+            to match resumes against job descriptions.
             
-            🎯 **Multi-Factor Analysis**
-            - Not just "does this text sound similar"
-            - Actually checks if requirements are met
+            **Features:**
+            - Semantic matching via embeddings
+            - Keyword boost for must-haves
+            - Multi-PDF batch processing
+            - Fallback extraction (OCR support)
             
-            📊 **Transparent Scoring**
-            - See exactly WHY a candidate scored high/low
-            - Identify skill gaps and experience mismatches
-            
-            ⚙️ **Customizable**
-            - Adjust weights for what matters most
-            - Focus on experience vs skills vs semantics
-            
-            ---
-            
-            **Scoring Components:**
-            - **Semantic (30%)**: Context understanding
-            - **Experience (25%)**: Years match
-            - **Skills (25%)**: Required skills coverage
-            - **Keywords (15%)**: Must-have terms
-            - **Education (5%)**: Degree requirements
+            **Privacy:** All processing happens in-memory. 
+            No data is stored or sent to third parties.
             """)
+            
+            st.markdown("---")
+            st.markdown("### Job Description Tips")
+            st.markdown("""
+            **For best results, include:**
+            - Required skills & technologies
+            - Years of experience needed
+            - Education requirements
+            - Specific certifications
+            - Key responsibilities
+            
+            **Recommended:** 50+ characters
+            """)
+            
+            st.markdown("---")
+            st.markdown("**Version:** 1.0.0")
+            st.markdown("**License:** MIT")
         
         job_description, uploaded_files, enable_ocr = self.render_input_section()
         
-        if st.button("🚀 Run Enhanced Analysis", type="primary", use_container_width=True):
+        if st.button("Run AI Screening", type="primary", use_container_width=True):
             is_valid, error_message = self.validate_inputs(job_description, uploaded_files)
             
             if not is_valid:
                 st.error(error_message)
                 return
             
-            with st.spinner("Performing intelligent candidate analysis..."):
+            with st.spinner("Processing resumes..."):
                 try:
                     results = self.process_resumes(job_description, uploaded_files, enable_ocr)
                     
