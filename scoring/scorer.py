@@ -352,14 +352,21 @@ class EnhancedScorer:
         job_description: str,
         resume_text: str
     ) -> Tuple[float, List[str]]:
-        """Compute keyword presence score."""
+        """
+        Compute keyword presence score.
+        Only counts keywords that appear in BOTH the JD and resume.
+        Score is based on how many JD keywords the resume matches.
+        """
         matched_keywords = []
+        jd_keywords_found = []  # Keywords that appear in the JD
         job_desc_lower = job_description.lower()
         resume_lower = resume_text.lower()
         
+        # First, find which keywords from config appear in the JD
         for keyword_set in self.must_have_keywords:
             keywords = [kw.strip() for kw in keyword_set.split('|')]
             
+            # Check if keyword appears in job description
             jd_has_keyword = any(
                 re.search(r'\b' + re.escape(kw) + r'\b', job_desc_lower)
                 for kw in keywords
@@ -368,15 +375,22 @@ class EnhancedScorer:
             if not jd_has_keyword:
                 continue
             
+            # This keyword is relevant to the JD
+            jd_keywords_found.append(keyword_set)
+            
+            # Check if resume has this keyword
             for keyword in keywords:
                 if re.search(r'\b' + re.escape(keyword) + r'\b', resume_lower):
                     matched_keywords.append(keyword)
                     break
         
-        if not self.must_have_keywords:
-            score = 0.5
+        # Score based on JD keywords matched, not total config keywords
+        if not jd_keywords_found:
+            # No keywords from config found in JD - give neutral score
+            score = 0.7
         else:
-            score = len(matched_keywords) / len(self.must_have_keywords)
+            # Percentage of JD keywords found in resume
+            score = len(matched_keywords) / len(jd_keywords_found)
         
         return score, matched_keywords
     
