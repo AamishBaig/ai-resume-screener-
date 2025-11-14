@@ -35,11 +35,11 @@ class EnhancedScorer:
         
         # Scoring weights (should sum to 1.0)
         self.weights = {
-            'semantic_similarity': 0.15,  # Reduced from being the only factor
-            'experience_match': 0.25,     # Years of experience
-            'skills_coverage': 0.25,      # Required skills present
-            'keyword_match': 0.15,        # Must-have keywords
-            'education_match': 0.05       # Education requirements
+            'semantic_similarity': 0.15,  # Reduced - less reliable
+            'experience_match': 0.30,     # Increased - most important
+            'skills_coverage': 0.30,      # Increased - very important
+            'keyword_match': 0.15,        # Same
+            'education_match': 0.10       # Increased slightly
         }
     
     def extract_requirements(self, job_description: str) -> Dict[str, Any]:
@@ -525,4 +525,3 @@ class EnhancedScorer:
         except Exception as e:
             logger.warning(f"TF-IDF extraction failed: {str(e)}")
             return []
-
