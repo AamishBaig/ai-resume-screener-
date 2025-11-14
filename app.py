@@ -9,15 +9,10 @@ import time
 from typing import List, Dict, Any, Optional
 from io import BytesIO
 import logging
-import sys
-import os
-
-# Add current directory to path for imports
-sys.path.insert(0, os.path.dirname(__file__))
 
 from extractors.pdf_extractor import PDFExtractor
 from embeddings.embedder import Embedder
-from enhanced_scorer import EnhancedScorer
+from scoring.scorer import EnhancedScorer
 from utils.config import Config
 from utils.logging_config import setup_logging
 from utils.sanitizers import sanitize_filename
