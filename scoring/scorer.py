@@ -97,13 +97,27 @@ class EnhancedScorer:
         
         # Common technical/professional skills to look for
         common_skills = [
-            'python', 'javascript', 'java', 'sql', 'react', 'angular', 'vue',
-            'node', 'aws', 'azure', 'gcp', 'docker', 'kubernetes', 'git',
+            # Programming languages
+            'python', 'javascript', 'java', 'sql', 'php', 'ruby', 'c++', 'c#',
+            'typescript', 'golang', 'rust', 'swift', 'kotlin',
+            # Web technologies
+            'html', 'html5', 'css', 'css3', 'react', 'angular', 'vue',
+            'node', 'nodejs', 'express', 'django', 'flask', 'laravel',
+            'wordpress', 'drupal', 'joomla', 'cms',
+            # Cloud & DevOps
+            'aws', 'azure', 'gcp', 'ibm cloud', 'docker', 'kubernetes', 'git',
+            'jenkins', 'ci/cd', 'devops',
+            # Data & Analytics
             'machine learning', 'data analysis', 'excel', 'powerpoint', 'word',
-            'project management', 'agile', 'scrum', 'communication', 'leadership',
+            'tableau', 'power bi', 'analytics', 'big data', 'hadoop', 'spark',
+            # Project Management
+            'project management', 'agile', 'scrum', 'kanban', 'jira',
+            # Soft Skills
+            'communication', 'leadership', 'problem solving', 'teamwork',
+            # Operations & Supply Chain
             'procurement', 'inventory', 'logistics', 'operations', 'supply chain',
             'budgeting', 'forecasting', 'reporting', 'erp', 'sap', 'oracle',
-            'crm', 'salesforce', 'tableau', 'power bi', 'analytics',
+            'crm', 'salesforce',
             'vendor management', 'negotiation', 'contract', 'compliance',
             'warehouse', 'distribution', 'shipping', 'receiving', 'quality control',
             'lean', 'six sigma', 'continuous improvement', 'kpi', 'metrics'
@@ -190,13 +204,27 @@ class EnhancedScorer:
         
         # Extract skills (same list as in requirements)
         common_skills = [
-            'python', 'javascript', 'java', 'sql', 'react', 'angular', 'vue',
-            'node', 'aws', 'azure', 'gcp', 'docker', 'kubernetes', 'git',
+            # Programming languages
+            'python', 'javascript', 'java', 'sql', 'php', 'ruby', 'c++', 'c#',
+            'typescript', 'golang', 'rust', 'swift', 'kotlin',
+            # Web technologies
+            'html', 'html5', 'css', 'css3', 'react', 'angular', 'vue',
+            'node', 'nodejs', 'express', 'django', 'flask', 'laravel',
+            'wordpress', 'drupal', 'joomla', 'cms',
+            # Cloud & DevOps
+            'aws', 'azure', 'gcp', 'ibm cloud', 'docker', 'kubernetes', 'git',
+            'jenkins', 'ci/cd', 'devops',
+            # Data & Analytics
             'machine learning', 'data analysis', 'excel', 'powerpoint', 'word',
-            'project management', 'agile', 'scrum', 'communication', 'leadership',
+            'tableau', 'power bi', 'analytics', 'big data', 'hadoop', 'spark',
+            # Project Management
+            'project management', 'agile', 'scrum', 'kanban', 'jira',
+            # Soft Skills
+            'communication', 'leadership', 'problem solving', 'teamwork',
+            # Operations & Supply Chain
             'procurement', 'inventory', 'logistics', 'operations', 'supply chain',
             'budgeting', 'forecasting', 'reporting', 'erp', 'sap', 'oracle',
-            'crm', 'salesforce', 'tableau', 'power bi', 'analytics',
+            'crm', 'salesforce',
             'vendor management', 'negotiation', 'contract', 'compliance',
             'warehouse', 'distribution', 'shipping', 'receiving', 'quality control',
             'lean', 'six sigma', 'continuous improvement', 'kpi', 'metrics'
