@@ -35,7 +35,7 @@ class EnhancedScorer:
         
         # Scoring weights (should sum to 1.0)
         self.weights = {
-            'semantic_similarity': 0.30,  # Reduced from being the only factor
+            'semantic_similarity': 0.15,  # Reduced from being the only factor
             'experience_match': 0.25,     # Years of experience
             'skills_coverage': 0.25,      # Required skills present
             'keyword_match': 0.15,        # Must-have keywords
@@ -525,3 +525,4 @@ class EnhancedScorer:
         except Exception as e:
             logger.warning(f"TF-IDF extraction failed: {str(e)}")
             return []
+
