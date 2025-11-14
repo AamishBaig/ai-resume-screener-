@@ -118,22 +118,16 @@ class EnhancedResumeScreenerApp:
     
     def render_header(self) -> None:
         """Render application header."""
-        st.title("🎯 Enhanced AI Resume Screening")
+        st.title("AI Resume Screening System")
         st.markdown("""
-        **Multi-factor intelligent matching** that goes beyond simple text similarity.
-        This system evaluates:
-        - ✅ Years of experience match
-        - ✅ Required skills coverage  
-        - ✅ Education requirements
-        - ✅ Semantic context understanding
-        - ✅ Keyword presence
+        Upload job description and candidate resumes to get AI-powered ranking 
+        based on semantic similarity and keyword matching.
         """)
         
         st.markdown("""
         <div class="info-hint">
-            <strong>Pro Tip:</strong> Be specific in your job description! Include exact years of experience needed,
-            specific skills required, and education level. Example: "10 years operations experience, procurement expertise, 
-            supply chain management, bachelor's degree required"
+            <strong>Pro Tip:</strong> For best results, provide a detailed job description with 
+            50+ characters including requirements, skills, and responsibilities.
         </div>
         """, unsafe_allow_html=True)
         
