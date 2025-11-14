@@ -118,6 +118,16 @@ class EnhancedResumeScreenerApp:
     
     def render_header(self) -> None:
         """Render application header."""
+        st.title("🎯 Enhanced AI Resume Screening")
+        st.markdown("""
+        **Multi-factor intelligent matching** that goes beyond simple text similarity.
+        This system evaluates:
+        - ✅ Years of experience match
+        - ✅ Required skills coverage  
+        - ✅ Education requirements
+        - ✅ Semantic context understanding
+        - ✅ Keyword presence
+        """)
         
         st.markdown("""
         <div class="info-hint">
@@ -192,15 +202,15 @@ Certifications: Six Sigma preferred""",
             col_w1, col_w2, col_w3 = st.columns(3)
             
             with col_w1:
-                w_semantic = st.slider("Semantic Similarity", 0.0, 1.0, 0.30, 0.05)
-                w_experience = st.slider("Experience Match", 0.0, 1.0, 0.25, 0.05)
+                w_semantic = st.slider("Semantic Similarity", 0.0, 1.0, 0.15, 0.05)
+                w_experience = st.slider("Experience Match", 0.0, 1.0, 0.30, 0.05)
             
             with col_w2:
-                w_skills = st.slider("Skills Coverage", 0.0, 1.0, 0.25, 0.05)
+                w_skills = st.slider("Skills Coverage", 0.0, 1.0, 0.30, 0.05)
                 w_keywords = st.slider("Keyword Match", 0.0, 1.0, 0.15, 0.05)
             
             with col_w3:
-                w_education = st.slider("Education Match", 0.0, 1.0, 0.05, 0.05)
+                w_education = st.slider("Education Match", 0.0, 1.0, 0.10, 0.05)
             
             total_weight = w_semantic + w_experience + w_skills + w_keywords + w_education
             
@@ -667,4 +677,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
