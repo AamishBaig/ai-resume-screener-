@@ -118,16 +118,6 @@ class EnhancedResumeScreenerApp:
     
     def render_header(self) -> None:
         """Render application header."""
-        st.title("🎯 Enhanced AI Resume Screening")
-        st.markdown("""
-        **Multi-factor intelligent matching** that goes beyond simple text similarity.
-        This system evaluates:
-        - ✅ Years of experience match
-        - ✅ Required skills coverage  
-        - ✅ Education requirements
-        - ✅ Semantic context understanding
-        - ✅ Keyword presence
-        """)
         
         st.markdown("""
         <div class="info-hint">
@@ -677,3 +667,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
