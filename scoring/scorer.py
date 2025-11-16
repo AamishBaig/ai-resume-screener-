@@ -42,6 +42,293 @@ class EnhancedScorer:
             'education_match': 0.10       # Increased slightly
         }
     
+    def _get_comprehensive_skills_list(self) -> List[str]:
+        """Return the comprehensive skills database (500+ skills)."""
+        return [
+            # ========== PROGRAMMING LANGUAGES ==========
+            'python', 'javascript', 'java', 'c++', 'c#', 'c', 'ruby', 'php', 'swift',
+            'kotlin', 'go', 'golang', 'rust', 'scala', 'perl', 'r', 'matlab', 'lua',
+            'typescript', 'dart', 'objective-c', 'shell', 'bash', 'powershell', 'vba',
+            'groovy', 'haskell', 'elixir', 'clojure', 'f#', 'assembly', 'cobol', 'fortran',
+            # ========== WEB TECHNOLOGIES ==========
+            'html', 'html5', 'css', 'css3', 'sass', 'less', 'bootstrap', 'tailwind',
+            'react', 'reactjs', 'angular', 'angularjs', 'vue', 'vuejs', 'svelte',
+            'next.js', 'nextjs', 'nuxt', 'gatsby', 'ember', 'backbone',
+            'node', 'nodejs', 'express', 'expressjs', 'nestjs', 'fastify',
+            'django', 'flask', 'fastapi', 'laravel', 'symfony', 'codeigniter',
+            'spring', 'spring boot', 'springboot', 'hibernate', 'struts',
+            'asp.net', 'dotnet', '.net', 'blazor', 'razor',
+            'ruby on rails', 'rails', 'sinatra',
+            'wordpress', 'drupal', 'joomla', 'magento', 'shopify', 'woocommerce',
+            'contentful', 'strapi', 'sanity', 'ghost', 'cms',
+            'graphql', 'rest', 'rest api', 'restful', 'soap', 'grpc', 'websocket',
+            'json', 'xml', 'yaml', 'markdown',
+            # ========== DATABASES ==========
+            'sql', 'mysql', 'postgresql', 'postgres', 'oracle', 'sql server', 'mssql',
+            'sqlite', 'mariadb', 'db2', 'teradata', 'snowflake', 'redshift',
+            'mongodb', 'nosql', 'cassandra', 'couchdb', 'dynamodb', 'firebase',
+            'redis', 'memcached', 'elasticsearch', 'solr', 'neo4j', 'graphdb',
+            # ========== CLOUD & DEVOPS ==========
+            'aws', 'amazon web services', 'azure', 'microsoft azure', 'gcp', 'google cloud',
+            'ibm cloud', 'oracle cloud', 'digitalocean', 'heroku', 'netlify', 'vercel',
+            'docker', 'kubernetes', 'k8s', 'openshift', 'rancher', 'helm',
+            'terraform', 'ansible', 'puppet', 'chef', 'vagrant', 'packer',
+            'jenkins', 'gitlab ci', 'github actions', 'circleci', 'travis ci', 'bamboo',
+            'ci/cd', 'continuous integration', 'continuous deployment', 'devops', 'devsecops',
+            'linux', 'ubuntu', 'centos', 'redhat', 'debian', 'windows server', 'unix',
+            'nginx', 'apache', 'iis', 'tomcat', 'load balancing',
+            'serverless', 'lambda', 'cloud functions',
+            # ========== VERSION CONTROL ==========
+            'git', 'github', 'gitlab', 'bitbucket', 'svn', 'subversion', 'mercurial',
+            'version control', 'branching', 'merging', 'pull request', 'code review',
+            # ========== MOBILE DEVELOPMENT ==========
+            'ios', 'android', 'react native', 'flutter', 'xamarin', 'ionic', 'cordova',
+            'swiftui', 'uikit', 'jetpack compose', 'kotlin multiplatform', 'pwa',
+            'mobile development', 'app development',
+            # ========== DATA SCIENCE & ML ==========
+            'machine learning', 'deep learning', 'artificial intelligence', 'ai', 'ml',
+            'neural networks', 'nlp', 'natural language processing', 'computer vision',
+            'tensorflow', 'pytorch', 'keras', 'scikit-learn', 'sklearn', 'pandas', 'numpy',
+            'scipy', 'matplotlib', 'seaborn', 'plotly', 'jupyter', 'anaconda',
+            'data mining', 'predictive modeling', 'classification', 'regression', 'clustering',
+            'random forest', 'xgboost', 'gradient boosting', 'svm',
+            'cnn', 'rnn', 'lstm', 'transformer', 'bert', 'gpt', 'llm',
+            'opencv', 'image processing', 'object detection', 'face recognition',
+            'recommendation systems', 'time series', 'anomaly detection',
+            'feature engineering', 'model deployment', 'mlops', 'kubeflow', 'mlflow',
+            # ========== DATA ANALYTICS & BI ==========
+            'data analysis', 'data analytics', 'business intelligence', 'bi',
+            'excel', 'advanced excel', 'pivot tables', 'vlookup', 'macros',
+            'tableau', 'power bi', 'looker', 'qlik', 'qlikview', 'qliksense',
+            'google analytics', 'adobe analytics', 'mixpanel', 'amplitude', 'segment',
+            'data visualization', 'dashboards', 'reporting', 'kpi', 'metrics',
+            'etl', 'data pipeline', 'data warehouse', 'data lake', 'data modeling',
+            'dbt', 'airflow', 'luigi', 'prefect', 'dagster',
+            'statistics', 'statistical analysis', 'hypothesis testing', 'a/b testing',
+            'big data', 'hadoop', 'spark', 'hive', 'pig', 'kafka', 'flink', 'storm',
+            'databricks', 'presto', 'athena', 'bigquery',
+            # ========== CYBERSECURITY ==========
+            'cybersecurity', 'information security', 'network security', 'cloud security',
+            'penetration testing', 'ethical hacking', 'vulnerability assessment',
+            'siem', 'splunk', 'firewall', 'vpn', 'encryption',
+            'oauth', 'saml', 'jwt', 'ssl', 'tls', 'https', 'authentication', 'authorization',
+            'gdpr', 'hipaa', 'pci dss', 'iso 27001',
+            'incident response', 'threat detection', 'malware analysis', 'forensics',
+            # ========== PROJECT MANAGEMENT ==========
+            'project management', 'program management', 'portfolio management',
+            'agile', 'scrum', 'kanban', 'lean', 'waterfall', 'prince2', 'pmbok',
+            'sprint planning', 'backlog grooming', 'retrospective', 'daily standup',
+            'jira', 'confluence', 'asana', 'trello', 'monday.com', 'basecamp', 'notion',
+            'microsoft project', 'smartsheet', 'wrike', 'clickup',
+            'pmp', 'csm', 'safe', 'scaled agile',
+            'risk management', 'stakeholder management', 'budget management',
+            'resource planning', 'capacity planning', 'roadmap', 'gantt chart',
+            'change management', 'requirements gathering', 'scope management',
+            # ========== SOFT SKILLS ==========
+            'communication', 'written communication', 'verbal communication', 'presentation',
+            'leadership', 'team leadership', 'people management', 'mentoring', 'coaching',
+            'problem solving', 'critical thinking', 'analytical thinking', 'decision making',
+            'teamwork', 'collaboration', 'cross-functional', 'interpersonal',
+            'time management', 'organization', 'multitasking', 'prioritization',
+            'adaptability', 'flexibility', 'learning agility', 'growth mindset',
+            'creativity', 'innovation', 'strategic thinking',
+            'negotiation', 'conflict resolution', 'mediation', 'diplomacy',
+            'customer service', 'client relations', 'stakeholder engagement',
+            'attention to detail', 'accuracy', 'quality focus',
+            'initiative', 'self-motivated', 'proactive', 'entrepreneurial',
+            'emotional intelligence', 'empathy', 'cultural awareness', 'diversity',
+            # ========== TESTING & QA ==========
+            'testing', 'quality assurance', 'qa', 'qc', 'quality control',
+            'unit testing', 'integration testing', 'end-to-end testing', 'e2e',
+            'manual testing', 'automated testing', 'test automation',
+            'selenium', 'cypress', 'playwright', 'puppeteer', 'appium',
+            'jest', 'mocha', 'chai', 'jasmine', 'karma', 'junit', 'testng', 'pytest',
+            'postman', 'api testing', 'performance testing', 'load testing',
+            'jmeter', 'gatling', 'locust', 'k6',
+            'tdd', 'test driven development', 'bdd', 'behavior driven development',
+            'cucumber', 'gherkin', 'robot framework',
+            'bug tracking', 'defect management', 'test cases', 'test plans',
+            # ========== DESIGN & UX ==========
+            'ui design', 'ux design', 'ui/ux', 'user interface', 'user experience',
+            'graphic design', 'visual design', 'web design', 'mobile design',
+            'figma', 'sketch', 'adobe xd', 'invision', 'zeplin', 'principle',
+            'adobe photoshop', 'photoshop', 'adobe illustrator', 'illustrator',
+            'adobe indesign', 'indesign', 'adobe creative suite', 'creative cloud',
+            'adobe after effects', 'after effects', 'adobe premiere', 'premiere pro',
+            'final cut pro', 'davinci resolve', 'video editing', 'motion graphics',
+            'wireframing', 'prototyping', 'mockups', 'user flows', 'journey mapping',
+            'usability testing', 'user research', 'personas', 'information architecture',
+            'responsive design', 'mobile first', 'accessibility', 'wcag',
+            'typography', 'color theory', 'branding', 'logo design', 'brand identity',
+            'illustration', 'iconography', '3d design', 'blender', 'cinema 4d', 'maya',
+            # ========== MARKETING & SALES ==========
+            'digital marketing', 'content marketing', 'inbound marketing', 'outbound marketing',
+            'seo', 'search engine optimization', 'sem', 'search engine marketing',
+            'ppc', 'pay per click', 'google ads', 'facebook ads', 'instagram ads',
+            'social media marketing', 'smm', 'social media management',
+            'email marketing', 'mailchimp', 'hubspot', 'marketo', 'pardot', 'klaviyo',
+            'marketing automation', 'lead generation', 'lead nurturing', 'conversion optimization',
+            'copywriting', 'content writing', 'blog writing', 'technical writing',
+            'brand management', 'brand strategy', 'market research', 'competitive analysis',
+            'customer acquisition', 'retention', 'churn analysis', 'lifetime value',
+            'crm', 'salesforce', 'hubspot crm', 'zoho crm', 'pipedrive', 'dynamics 365',
+            'sales', 'b2b sales', 'b2c sales', 'enterprise sales', 'saas sales',
+            'account management', 'business development', 'partnership', 'channel sales',
+            'cold calling', 'prospecting', 'pipeline management',
+            'proposal writing', 'contract negotiation',
+            # ========== FINANCE & ACCOUNTING ==========
+            'accounting', 'bookkeeping', 'financial reporting', 'financial analysis',
+            'gaap', 'ifrs', 'financial statements', 'balance sheet', 'income statement',
+            'cash flow', 'budgeting', 'variance analysis',
+            'accounts payable', 'accounts receivable', 'general ledger', 'reconciliation',
+            'tax', 'tax preparation', 'tax planning', 'corporate tax',
+            'audit', 'internal audit', 'external audit', 'sox compliance',
+            'cpa', 'cfa', 'cma', 'certified public accountant',
+            'quickbooks', 'sage', 'xero', 'netsuite', 'sap', 'oracle financials',
+            'financial modeling', 'valuation', 'dcf', 'merger', 'acquisition',
+            'investment banking', 'private equity', 'venture capital', 'hedge fund',
+            'portfolio management', 'asset management', 'wealth management',
+            'risk assessment', 'credit analysis', 'loan underwriting',
+            'bloomberg terminal', 'reuters', 'capital iq', 'pitchbook',
+            'derivatives', 'options', 'futures', 'fixed income', 'equities',
+            'regulatory compliance', 'anti-money laundering', 'aml', 'kyc',
+            # ========== HEALTHCARE & MEDICAL ==========
+            'healthcare', 'patient care', 'clinical', 'medical',
+            'registered nurse', 'rn', 'lpn', 'nurse practitioner', 'np',
+            'physician', 'doctor', 'md', 'surgeon', 'specialist',
+            'pharmacist', 'pharmacy', 'medication management',
+            'medical records', 'emr', 'ehr', 'electronic health records',
+            'epic', 'cerner', 'meditech', 'allscripts',
+            'hipaa', 'patient privacy', 'medical billing', 'medical coding',
+            'icd-10', 'cpt codes', 'revenue cycle',
+            'diagnosis', 'treatment', 'prognosis', 'patient assessment',
+            'vital signs', 'medication administration', 'wound care',
+            'surgery', 'anesthesia', 'post-operative care', 'pre-operative',
+            'radiology', 'x-ray', 'mri', 'ct scan', 'ultrasound',
+            'laboratory', 'blood work', 'pathology', 'microbiology',
+            'physical therapy', 'occupational therapy', 'rehabilitation',
+            'mental health', 'psychiatry', 'psychology', 'counseling',
+            'pediatrics', 'geriatrics', 'obstetrics', 'gynecology',
+            'cardiology', 'neurology', 'oncology', 'orthopedics',
+            'emergency medicine', 'icu', 'critical care', 'trauma',
+            'infection control', 'sterilization', 'sanitation',
+            'cpr', 'bls', 'acls', 'first aid', 'emergency response',
+            # ========== LEGAL ==========
+            'legal', 'law', 'attorney', 'lawyer', 'paralegal',
+            'litigation', 'trial', 'court', 'arbitration',
+            'contract law', 'corporate law', 'business law', 'commercial law',
+            'intellectual property', 'patent', 'trademark', 'copyright',
+            'employment law', 'labor law', 'hr law',
+            'criminal law', 'civil law', 'family law', 'estate planning',
+            'real estate law', 'property law',
+            'immigration law', 'visa', 'citizenship',
+            'tax law', 'securities law', 'bankruptcy',
+            'legal research', 'westlaw', 'lexisnexis', 'case law',
+            'legal writing', 'brief writing', 'motion practice',
+            'discovery', 'deposition', 'interrogatories',
+            'contract drafting', 'contract review', 'due diligence',
+            'regulatory', 'compliance', 'ethics',
+            'bar admission', 'juris doctor', 'jd', 'llm',
+            # ========== ENGINEERING (NON-SOFTWARE) ==========
+            'mechanical engineering', 'electrical engineering', 'civil engineering',
+            'chemical engineering', 'industrial engineering', 'aerospace engineering',
+            'structural engineering', 'environmental engineering', 'biomedical engineering',
+            'cad', 'computer-aided design', 'autocad', 'solidworks', 'catia', 'inventor',
+            'revit', 'civil 3d', 'microstation', 'sketchup',
+            'fea', 'finite element analysis', 'ansys', 'abaqus', 'nastran',
+            'cfd', 'computational fluid dynamics', 'fluent', 'openfoam',
+            'plc', 'programmable logic controller', 'scada', 'hmi',
+            'pcb design', 'altium', 'eagle', 'kicad', 'orcad',
+            'circuit design', 'electronics', 'embedded systems', 'microcontroller',
+            'arduino', 'raspberry pi', 'fpga', 'verilog', 'vhdl',
+            'thermodynamics', 'fluid mechanics', 'heat transfer', 'statics', 'dynamics',
+            'materials science', 'metallurgy', 'composites', 'polymers',
+            'manufacturing', 'cnc', 'machining', '3d printing', 'additive manufacturing',
+            'lean manufacturing', 'six sigma', 'continuous improvement', 'kaizen',
+            'iso 9001', 'iso 14001',
+            'root cause analysis', 'fmea', 'spc', 'statistical process control',
+            'supply chain', 'logistics', 'procurement', 'inventory management',
+            'warehouse', 'distribution', 'shipping', 'receiving',
+            'operations', 'production planning',
+            'maintenance', 'preventive maintenance', 'predictive maintenance',
+            'safety', 'osha', 'hazard analysis',
+            # ========== HUMAN RESOURCES ==========
+            'human resources', 'hr', 'talent acquisition', 'recruitment', 'hiring',
+            'sourcing', 'screening', 'interviewing', 'onboarding', 'offboarding',
+            'employee relations', 'employee engagement',
+            'performance management', 'performance review', 'goal setting', 'okr',
+            'compensation', 'benefits', 'payroll', 'total rewards',
+            'hris', 'workday', 'adp', 'bamboohr', 'successfactors', 'peoplesoft',
+            'eeo', 'ada',
+            'diversity and inclusion', 'dei', 'equity', 'belonging',
+            'training and development', 'learning and development', 'l&d',
+            'organizational development', 'culture',
+            'succession planning', 'talent management', 'workforce planning',
+            'employee handbook', 'policy development', 'procedures',
+            'investigation', 'disciplinary action',
+            'shrm', 'phr', 'sphr', 'shrm-cp', 'shrm-scp',
+            # ========== EDUCATION & TRAINING ==========
+            'teaching', 'instruction', 'education', 'training', 'facilitation',
+            'curriculum development', 'instructional design', 'lesson planning',
+            'classroom management', 'student engagement', 'differentiation',
+            'assessment', 'evaluation', 'grading', 'feedback',
+            'special education', 'iep', 'accommodations', 'modifications',
+            'early childhood', 'elementary', 'secondary', 'higher education',
+            'adult learning', 'andragogy', 'corporate training',
+            'e-learning', 'online learning', 'blended learning', 'virtual classroom',
+            'lms', 'learning management system', 'moodle', 'canvas', 'blackboard',
+            'articulate', 'captivate', 'storyline', 'rise',
+            'scorm', 'xapi', 'tin can',
+            'pedagogy', 'learning theory', 'blooms taxonomy',
+            'stem', 'steam', 'project-based learning', 'inquiry-based learning',
+            # ========== CUSTOMER SERVICE ==========
+            'customer support', 'technical support', 'help desk',
+            'call center', 'contact center', 'inbound', 'outbound',
+            'ticketing system', 'zendesk', 'freshdesk', 'servicenow', 'intercom',
+            'customer satisfaction', 'csat', 'nps', 'net promoter score',
+            'first call resolution', 'average handle time', 'service level',
+            'de-escalation', 'complaint handling',
+            'product knowledge', 'troubleshooting', 'issue resolution',
+            'patience', 'active listening', 'clear communication',
+            'upselling', 'cross-selling', 'loyalty',
+            # ========== OPERATIONS & SUPPLY CHAIN ==========
+            'operations management', 'business operations',
+            'supply chain management', 'scm',
+            'transportation', 'freight',
+            'warehousing', 'fulfillment',
+            'inventory', 'stock control', 'wms',
+            'purchasing', 'sourcing', 'vendor management',
+            'supplier relations', 'rfp', 'rfq',
+            'demand planning', 'demand forecasting', 'sales forecasting',
+            'mrp', 'erp',
+            'process optimization',
+            'sla', 'service level agreement',
+            'cost reduction', 'efficiency', 'productivity', 'throughput',
+            # ========== REAL ESTATE & CONSTRUCTION ==========
+            'real estate', 'property management', 'leasing', 'tenant relations',
+            'commercial real estate', 'residential real estate', 'industrial',
+            'construction', 'construction management', 'general contractor',
+            'site supervision', 'safety management',
+            'building codes', 'permits', 'inspections',
+            'blueprints', 'architectural drawings', 'specifications',
+            'estimating', 'cost estimation', 'bidding',
+            'scheduling', 'critical path', 'primavera',
+            'subcontractor management', 'vendor coordination',
+            'leed', 'green building', 'sustainability',
+            # ========== GENERAL BUSINESS ==========
+            'strategy', 'strategic planning', 'business strategy', 'corporate strategy',
+            'growth', 'expansion', 'market entry',
+            'entrepreneurship', 'startup', 'venture',
+            'consulting', 'advisory', 'management consulting', 'strategy consulting',
+            'operations consulting', 'it consulting', 'financial consulting',
+            'analysis', 'research', 'insights', 'recommendations',
+            'powerpoint', 'keynote', 'google slides',
+            'word', 'outlook', 'microsoft office', 'google workspace',
+            'documentation', 'sop', 'process documentation', 'knowledge management',
+            'bilingual', 'multilingual', 'spanish', 'french', 'mandarin', 'german',
+            'remote work', 'hybrid', 'virtual collaboration', 'distributed teams',
+        ]
+    
     def extract_requirements(self, job_description: str) -> Dict[str, Any]:
         """
         Extract specific requirements from job description.
@@ -95,33 +382,10 @@ class EnhancedScorer:
             r'(?:skills?|qualifications?|requirements?)(?:\s*required)?:[\s\S]{0,300}',
         ]
         
-        # Common technical/professional skills to look for
-        common_skills = [
-            # Programming languages
-            'python', 'javascript', 'java', 'sql', 'php', 'ruby', 'c++', 'c#',
-            'typescript', 'golang', 'rust', 'swift', 'kotlin',
-            # Web technologies
-            'html', 'html5', 'css', 'css3', 'react', 'angular', 'vue',
-            'node', 'nodejs', 'express', 'django', 'flask', 'laravel',
-            'wordpress', 'drupal', 'joomla', 'cms',
-            # Cloud & DevOps
-            'aws', 'azure', 'gcp', 'ibm cloud', 'docker', 'kubernetes', 'git',
-            'jenkins', 'ci/cd', 'devops',
-            # Data & Analytics
-            'machine learning', 'data analysis', 'excel', 'powerpoint', 'word',
-            'tableau', 'power bi', 'analytics', 'big data', 'hadoop', 'spark',
-            # Project Management
-            'project management', 'agile', 'scrum', 'kanban', 'jira',
-            # Soft Skills
-            'communication', 'leadership', 'problem solving', 'teamwork',
-            # Operations & Supply Chain
-            'procurement', 'inventory', 'logistics', 'operations', 'supply chain',
-            'budgeting', 'forecasting', 'reporting', 'erp', 'sap', 'oracle',
-            'crm', 'salesforce',
-            'vendor management', 'negotiation', 'contract', 'compliance',
-            'warehouse', 'distribution', 'shipping', 'receiving', 'quality control',
-            'lean', 'six sigma', 'continuous improvement', 'kpi', 'metrics'
-        ]
+        # Use comprehensive skills database (500+ skills)
+        common_skills = self._get_comprehensive_skills_list()
+        
+        # Legacy inline list commented out - now using _get_comprehensive_skills_list()
         
         for skill in common_skills:
             if re.search(r'\b' + re.escape(skill) + r'\b', jd_lower):
@@ -133,7 +397,8 @@ class EnhancedScorer:
             (r'\b(?:master|ms|ma|mba|m\.s\.|m\.a\.)\b', 'masters'),
             (r'\b(?:phd|ph\.d\.|doctorate)\b', 'phd'),
             (r'\b(?:diploma|associate)\b', 'diploma'),
-            (r'\b(?:degree)\b', 'degree')
+            (r'\b(?:degree|graduate|university|college)\b', 'degree'),  # More patterns
+            (r'\b(?:4.year|four.year)\b', 'bachelors'),  # "4-year degree"
         ]
         
         for pattern, level in education_patterns:
@@ -202,33 +467,9 @@ class EnhancedScorer:
             
             resume_info['total_years'] = total_years
         
-        # Extract skills (same list as in requirements)
-        common_skills = [
-            # Programming languages
-            'python', 'javascript', 'java', 'sql', 'php', 'ruby', 'c++', 'c#',
-            'typescript', 'golang', 'rust', 'swift', 'kotlin',
-            # Web technologies
-            'html', 'html5', 'css', 'css3', 'react', 'angular', 'vue',
-            'node', 'nodejs', 'express', 'django', 'flask', 'laravel',
-            'wordpress', 'drupal', 'joomla', 'cms',
-            # Cloud & DevOps
-            'aws', 'azure', 'gcp', 'ibm cloud', 'docker', 'kubernetes', 'git',
-            'jenkins', 'ci/cd', 'devops',
-            # Data & Analytics
-            'machine learning', 'data analysis', 'excel', 'powerpoint', 'word',
-            'tableau', 'power bi', 'analytics', 'big data', 'hadoop', 'spark',
-            # Project Management
-            'project management', 'agile', 'scrum', 'kanban', 'jira',
-            # Soft Skills
-            'communication', 'leadership', 'problem solving', 'teamwork',
-            # Operations & Supply Chain
-            'procurement', 'inventory', 'logistics', 'operations', 'supply chain',
-            'budgeting', 'forecasting', 'reporting', 'erp', 'sap', 'oracle',
-            'crm', 'salesforce',
-            'vendor management', 'negotiation', 'contract', 'compliance',
-            'warehouse', 'distribution', 'shipping', 'receiving', 'quality control',
-            'lean', 'six sigma', 'continuous improvement', 'kpi', 'metrics'
-        ]
+        # Extract skills - uses same comprehensive list as extract_requirements
+        # This ensures consistency between JD parsing and resume parsing
+        common_skills = self._get_comprehensive_skills_list()
         
         for skill in common_skills:
             if re.search(r'\b' + re.escape(skill) + r'\b', resume_lower):
@@ -348,32 +589,57 @@ class EnhancedScorer:
         return coverage, matched, missing
     
     def compute_education_score(
-        self,
-        required_level: Optional[str],
-        candidate_level: Optional[str]
-    ) -> float:
-        """Score based on education match."""
-        if required_level is None:
-            return 0.8  # No requirement
-        
-        if candidate_level is None:
-            return 0.3  # Can't determine education
-        
-        education_ranks = {
-            'diploma': 1,
-            'degree': 2,
-            'bachelors': 2,
-            'masters': 3,
-            'phd': 4
-        }
-        
-        required_rank = education_ranks.get(required_level, 2)
-        candidate_rank = education_ranks.get(candidate_level, 0)
-        
-        if candidate_rank >= required_rank:
-            return 1.0
-        else:
-            return 0.5  # Below requirement
+            self,
+            required_level: Optional[str],
+            candidate_level: Optional[str]
+        ) -> float:
+            """
+            Score based on education match with proportional scoring.
+            
+            Returns:
+            - 1.0: Meets or exceeds requirement
+            - 0.8: No requirement specified
+            - 0.3-0.7: Below requirement (proportional to gap)
+            - 0.3: Can't determine education
+            """
+            if required_level is None:
+                return 0.8  # No requirement specified
+            
+            if candidate_level is None:
+                return 0.3  # Can't determine candidate's education
+            
+            # Education hierarchy with ranks
+            education_ranks = {
+                'high school': 0,
+                'diploma': 1,
+                'associate': 1.5,
+                'degree': 2,      # Generic degree = bachelors level
+                'bachelors': 2,
+                'masters': 3,
+                'mba': 3,
+                'phd': 4,
+                'doctorate': 4
+            }
+            
+            required_rank = education_ranks.get(required_level.lower(), 2)
+            candidate_rank = education_ranks.get(candidate_level.lower(), 0)
+            
+            if candidate_rank >= required_rank:
+                # Meets or exceeds requirement
+                return 1.0
+            else:
+                # Below requirement - score proportionally based on gap
+                # Small gap = higher score, large gap = lower score
+                gap = required_rank - candidate_rank
+                
+                if gap <= 0.5:
+                    return 0.7  # Very close (e.g., associate vs bachelors)
+                elif gap <= 1:
+                    return 0.6  # One level below (e.g., bachelors vs masters)
+                elif gap <= 2:
+                    return 0.5  # Two levels below
+                else:
+                    return 0.4  # Significantly below (e.g., diploma vs PhD)
     
     def compute_keyword_boost(
         self,
