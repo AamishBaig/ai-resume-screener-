@@ -1,5 +1,5 @@
 # scoring/__init__.py
 """Scoring and ranking module."""
-from .scorer import Scorer
+from .scorer import EnhancedScorer
 
-__all__ = ['Scorer']
+__all__ = ['EnhancedScorer']
